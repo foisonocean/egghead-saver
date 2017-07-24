@@ -1,0 +1,8 @@
+{
+  "name": "egghead-saver",
+  "version": "0.0.1",
+  "description": "Save egghead course offline.",
+  "repository": "https://github.com/foisonocean/egghead-saver.git",
+  "author": "foisonocean <foisonocean@gmail.com>",
+  "license": "MIT"
+}

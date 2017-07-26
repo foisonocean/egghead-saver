@@ -13,14 +13,18 @@ async function getDownloadUrl (lessonUrl) {
   })
 
   return new Promise(resolve => {
-    Page.loadEventFired(async () => {
+    Page.loadEventFired(() => {
       const getDownloadUrlScript = readFileSync(pathResolve(__dirname, '../scripts/get-download-url.js'), 'utf-8')
-      const messageFormChrome = await Runtime.evaluate({
-        expression: getDownloadUrlScript
-      })
 
-      client.close()
-      resolve(messageFormChrome.result.value)
+      // NOTE: Use magic delay seconds to make sure the ayalyze is done.
+      setTimeout(async () => {
+        const messageFormChrome = await Runtime.evaluate({
+          expression: getDownloadUrlScript
+        })
+
+        client.close()
+        resolve(messageFormChrome.result.value)
+      }, 3000)
     })
   })
 }

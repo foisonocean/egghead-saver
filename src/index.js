@@ -35,17 +35,21 @@ if (!/^(http:\/\/|https:\/\/)?egghead\.io\/lessons\/.+$/ig.test(lessonUrl)) {
 
   console.log('\nCourse analyze complete:')
   console.log('\x1b[36m%s\x1b[0m', listOfCourseInfo.map(info => info.title).join('\n'))
-  console.log('\x1b[35m%s\x1b[0m', `Total ${listOfCourseInfo.length} lessons`)
+  console.log('\x1b[35m%s\x1b[0m', `Total ${listOfCourseInfo.length} lessons\n`)
 
   for (let i = 0; i < listOfCourseInfo.length; ++i) {
     const info = listOfCourseInfo[i]
     const name = `NO.${info.index + 1} ${info.title}`
     console.log(`Start ayalyze \`${name}\``)
     const url = await getDownloadUrl(info.url)
-    console.log(`Url is \`${url}\``)
-    console.log(`Start downloading \`${name}\``)
-    await download(info, url)
-    console.log(`Download complete: \`${name}\``)
+    if (url == null) {
+      console.error('\x1b[31m%s\x1b[0m', `Can't get download url of ${name}, skip it...`)
+    } else {
+      console.log(`Url is \`${url}\``)
+      console.log(`Start downloading \`${name}\``)
+      await download(info, url)
+      console.log(`Download complete: \`${name}\`\n`)
+    }
   }
   console.log('👍 All completed.')
   process.exit(0)

@@ -44,4 +44,13 @@ async function chromeLauncher () {
   })
 }
 
-module.exports = chromeLauncher
+async function exitChrome () {
+  if (chrome != null) {
+    await chrome.kill()
+  }
+}
+
+module.exports = {
+  chromeLauncher,
+  exitChrome
+}

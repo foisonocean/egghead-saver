@@ -1,7 +1,7 @@
 const { resolve: pathResolve } = require('path')
 const { readFileSync } = require('fs')
 
-const chromeLauncher = require('./chrome-launcher')
+const { chromeLauncher } = require('./chrome-launcher')
 
 async function getCourseInfo (lessonUrl) {
   const client = await chromeLauncher()

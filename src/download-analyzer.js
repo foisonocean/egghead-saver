@@ -1,7 +1,7 @@
 const { resolve: pathResolve } = require('path')
 const { readFileSync } = require('fs')
 
-const chromeLauncher = require('./chrome-launcher')
+const { chromeLauncher } = require('./chrome-launcher')
 
 const MAX_RETRIED_TIMES = 3
 const DELAY_SECONDS_BY_RETRY = {

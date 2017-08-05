@@ -7,7 +7,7 @@ function download (lessonInfo, videoUrl) {
   if (!existsSync(resolve(__dirname, '../downloads'))) {
     mkdirSync(resolve(__dirname, '../downloads'))
   }
-  const file = createWriteStream(resolve(__dirname, `../downloads/NO.${lessonInfo.index + 1} ${lessonInfo.title}.mp4`))
+  const file = createWriteStream(resolve(__dirname, `../downloads/No.${lessonInfo.index + 1} ${lessonInfo.title}.mp4`))
   http.get(videoUrl, response => {
     response.pipe(file)
   })
